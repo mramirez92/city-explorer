@@ -9,8 +9,8 @@ class FormCity extends React.Component {
   render() {
     return (
       <div>
-        <Form>
-          <Form.Group className="city-form" onSubmit={this.props.getCityData}>
+        <Form onSubmit={this.props.getCityData}>
+          <Form.Group className="city-form" >
             <Form.Label>City:</Form.Label>
             <Form.Control type="city-input" placeholder="Enter City Name"  onInput={this.props.handleInput} />
 
