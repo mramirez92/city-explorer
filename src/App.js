@@ -78,8 +78,18 @@ class App extends React.Component{
       lon={this.state.longitude}
       city={this.state.cityName}
       map= {this.state.cityMap}
-
       />
+       {
+          this.state.error
+          ?
+          <p>{this.state.errorMessage}</p>
+          :
+          <div>
+          <p>{this.state.cityName}</p>
+          <p>{this.state.latitude}</p>
+          <p>{this.state.longitude}</p>
+          </div>
+        }
      
       <Footer/>
       </div>

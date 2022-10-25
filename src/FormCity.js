@@ -18,6 +18,7 @@ class FormCity extends React.Component {
           <Button type="submit">
             Explore!
           </Button>
+          
         </Form>
       </div>
     );
