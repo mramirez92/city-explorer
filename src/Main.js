@@ -5,7 +5,10 @@ class Main extends React.Component{
     return(
       <div>
       <section>
-        <p>Enter your city name or zipcode to see some data!</p>
+        <p>City Name:{this.props.city}</p> 
+        <p>{this.props.lat}</p> 
+        <p>{this.props.lon}</p>
+        <img src={this.props.map} alt ={this.props.city}/>
       </section>
       </div>
     )
