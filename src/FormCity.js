@@ -10,13 +10,13 @@ class FormCity extends React.Component {
     return (
       <div>
         <Form>
-          <Form.Group className="city-form" onSubmit="">
+          <Form.Group className="city-form" onSubmit={this.props.getCityData}>
             <Form.Label>City:</Form.Label>
-            <Form.Control type="city-input" placeholder="City name or Zipcode" onInput="" />
+            <Form.Control type="city-input" placeholder="Enter City Name"  onInput={this.props.handleInput} />
 
           </Form.Group>
           <Button type="submit">
-            Submit
+            Explore!
           </Button>
         </Form>
       </div>
