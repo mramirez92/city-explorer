@@ -5,7 +5,7 @@ import Header from './Header.js';
 import Main from './Main';
 import Footer from './Footer.js';
 import FormCity from './FormCity.js';
-// import Axios from 'axios';
+import axios from 'axios';
 
 class App extends React.Component{
   constructor(props){
@@ -13,6 +13,8 @@ class App extends React.Component{
     this.state={
       city:'',
       cityData: [],
+      latitude:'',
+      longitude:'',
       error: false,
       errorMessage: ''
 
@@ -27,10 +29,23 @@ class App extends React.Component{
   getCityData = async(event)=>{
     event.preventDefault();
     try{
+      let url =`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`
+      
+      let cityData= await axios.get(url);
+      console.log(cityData.data);
+      this.setState({
+        cityData: cityData.data[0], 
+        longitude: cityData.data[0].lon,
+        latitude: cityData.data[0].lat,    
+        error: false
+      })
 
     }
     catch(error){
-
+      this.setState({
+        error:true,
+        errorMessage: error.message
+      })
     }
 
   }
@@ -39,7 +54,10 @@ class App extends React.Component{
       <div>
       <Header/>
       <Main/>
-      <FormCity/>
+      <FormCity
+      onsubmit={this.getCityData}
+      onInput={this.handleInput}
+      />
       <Footer/>
       </div>
     );
