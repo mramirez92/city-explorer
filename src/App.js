@@ -39,7 +39,7 @@ class App extends React.Component{
       console.log(cityData.data);
 
 
-      this.getCityWeather(cityToDisplay);
+      // this.getCityWeather(cityToDisplay);
 
       this.setState({
         cityName: cityData.data[0].display_name, 
@@ -49,11 +49,9 @@ class App extends React.Component{
       },
       () =>{
         this.getMapData();
-    },
-    () =>{
-      this.getCityWeather();
-  }
-    );
+        this.getCityWeather();
+        // call movies
+    });
 
     }
     catch(error){
@@ -66,15 +64,21 @@ class App extends React.Component{
   }
 
   getCityWeather = async() =>{
-    
-      let weatherUrl=`${process.env.REACT_APP_SERVER}/weather?cityName=${this.state.city}&lat=${this.state.latitude}&lon=${this.state.longitude}`
+      console.log('weather here');
+      try{
+      let weatherUrl=`${process.env.REACT_APP_SERVER}/weather?cityNameQ=${this.state.city}&lat=${this.state.latitude}&lon=${this.state.longitude}`
 
+      console.log(weatherUrl);
       let weatherData= await axios.get(weatherUrl);
+      let weatherDisplayed = weatherData.data
+
 
       this.setState({
-        weatherData: weatherData.data
+        weatherData: weatherDisplayed
       });
-
+    }catch(error){
+      console.log(error.message);
+    }
   };
 
   getMapData = async () => {
@@ -86,7 +90,7 @@ class App extends React.Component{
     })
   }
   render(){
-    console.log(this.state.city);
+    console.log(this.state);
     return(
       <div>
       <Header/> 
@@ -94,6 +98,7 @@ class App extends React.Component{
       getCityData={this.getCityData}
       handleInput={this.handleInput}
       />
+      {this.state.weatherData.length >0 &&
       <Main
       lat={this.state.latitude}
       lon={this.state.longitude}
@@ -101,6 +106,7 @@ class App extends React.Component{
       map= {this.state.cityMap}
       weather={this.state.weatherData}
       />
+  }
       <Footer/>
       </div>
     );
