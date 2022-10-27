@@ -9,6 +9,7 @@ class FormCity extends React.Component {
   render() {
     return (
       <div>
+        <p>Explore a new city!</p>
         <Form onSubmit={this.props.getCityData}>
           <Form.Group className="city-form" >
             <Form.Label>City:</Form.Label>
