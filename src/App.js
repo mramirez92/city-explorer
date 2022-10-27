@@ -6,6 +6,7 @@ import Main from './Main';
 import Footer from './Footer.js';
 import FormCity from './FormCity.js';
 import Weather from './Weather.js';
+import Movie from './Movie.js'
 import axios from 'axios';
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
       cityMap: '',
       error: false,
       errorMessage: '',
-      weatherData: []
+      weatherData: [],
+      movie:[]
 
     }
   }
@@ -59,6 +61,7 @@ class App extends React.Component {
   makeApiCalls = async function () {
     this.getMapData();
     this.getCityWeather();
+    this.getMovie();
   }
   getCityWeather = async () => {
     console.log('weather here');
@@ -72,6 +75,20 @@ class App extends React.Component {
         error: true,
         errorMessage: error.message
       })
+    }
+  }
+  getMovie = async () =>{
+    try{
+      let movieData = await axios.get(`${process.env.REACT_APP_SERVER}/movies?movieCity=${this.state.city}`)
+      this.setState({
+        movie:movieData.data
+      })
+
+    }catch(error){
+      this.setState({
+       error:true,
+      errorMessage: error.message 
+      })     
     }
   }
 
@@ -105,6 +122,8 @@ class App extends React.Component {
         <Weather 
         weather={this.state.weatherData}
         />
+        <Movie
+        movie={this.state.movie}/>
         <Footer />
       </div>
     );
