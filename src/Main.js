@@ -1,16 +1,30 @@
 import React from 'react';
+import Figure from 'react-bootstrap/Figure';
 
 class Main extends React.Component{
   render(){
     return(
-      <div>
-      <section>
-        <p>City Name:{this.props.city}</p> 
+      <Figure>
+      <Figure.Image
+        // width={auto}
+        // height={auto}
+        alt ={this.props.city}
+        src={this.props.map} 
+      />
+      <Figure.Caption>
+        <h3>City Name:{this.props.city} </h3>
         <p>{this.props.lat}</p> 
         <p>{this.props.lon}</p>
-        <img src={this.props.map} alt ={this.props.city}/>
-      </section>
-      </div>
+      </Figure.Caption>
+    </Figure>
+      // <div>
+      // <section>
+      //   <p>City Name:</p> 
+      //   <p>{this.props.lat}</p> 
+      //   <p>{this.props.lon}</p>
+      //   <img src={this.props.map} alt ={this.props.city}/>
+      // </section>
+      // </div>
     )
   };
 }
