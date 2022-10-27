@@ -103,9 +103,10 @@ class App extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        <Header />
+      <div className="Div">
+        <Header className="Header" />
         <FormCity
+        className= "FormCity"
           getCityData={this.getCityData}
           handleInput={this.handleInput}
         />
