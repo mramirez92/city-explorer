@@ -5,108 +5,107 @@ import Header from './Header.js';
 import Main from './Main';
 import Footer from './Footer.js';
 import FormCity from './FormCity.js';
+import Weather from './Weather.js';
 import axios from 'axios';
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={
-      city:'',
+    this.state = {
+      city: '',
       cityName: '',
-      latitude:'',
-      longitude:'',
+      lat: '',
+      lon: '',
       cityMap: '',
       error: false,
       errorMessage: '',
-      weatherData:[]
+      weatherData: []
 
     }
   }
 
-  handleInput= (event)=>{
-      this.setState({
-        city: event.target.value
-      })
+  handleInput = (event) => {
+    this.setState({
+      city: event.target.value
+    })
   }
-  getCityData = async(event)=>{
+  getCityData = async (event) => {
     event.preventDefault();
-    try{
-      let url =`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json` 
+    try {
+      let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`
 
-      let cityData= await axios.get(url);
+      let cityData = await axios.get(url);
 
       console.log(cityData.data);
 
 
       // this.getCityWeather(cityToDisplay);
-
       this.setState({
-        cityName: cityData.data[0].display_name, 
-        longitude: cityData.data[0].lon,
-        latitude: cityData.data[0].lat,   
+        cityName: cityData.data[0].display_name,
+        lon: cityData.data[0].lon,
+        lat: cityData.data[0].lat,
         error: false
       },
-      () =>{
-        this.getMapData();
-        this.getCityWeather();
-        // call movies
-    });
+        this.makeApiCalls);
 
     }
-    catch(error){
+    catch (error) {
       this.setState({
-        error:true,
+        error: true,
         errorMessage: error.message
       });
     }
-
+  }
+  makeApiCalls = async function () {
+    this.getMapData();
+    this.getCityWeather();
+  }
+  getCityWeather = async () => {
+    console.log('weather here');
+    try {
+      let weatherData = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.city}&lat=${this.state.lat}&lon=${this.state.lon}`)
+      this.setState({
+        weatherData: weatherData.data
+      })
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMessage: error.message
+      })
+    }
   }
 
-  getCityWeather = async() =>{
-      console.log('weather here');
-      try{
-      let weatherUrl=`${process.env.REACT_APP_SERVER}/weather?cityNameQ=${this.state.city}&lat=${this.state.latitude}&lon=${this.state.longitude}`
-
-      console.log(weatherUrl);
-      let weatherData= await axios.get(weatherUrl);
-      let weatherDisplayed = weatherData.data
-
-
-      this.setState({
-        weatherData: weatherDisplayed
-      });
-    }catch(error){
-      console.log(error.message);
-    }
-  };
-
   getMapData = async () => {
-    let mapUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.latitude},${this.state.longitude}&zoom=10`
+    let mapUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=10`
 
- 
+
     this.setState({
       cityMap: mapUrl,
     })
   }
-  render(){
+  render() {
     console.log(this.state);
-    return(
+    return (
       <div>
-      <Header/> 
-      <FormCity
-      getCityData={this.getCityData}
-      handleInput={this.handleInput}
-      />
-      {this.state.weatherData.length >0 &&
-      <Main
-      lat={this.state.latitude}
-      lon={this.state.longitude}
-      city={this.state.cityName}
-      map= {this.state.cityMap}
-      weather={this.state.weatherData}
-      />
-  }
-      <Footer/>
+        <Header />
+        <FormCity
+          getCityData={this.getCityData}
+          handleInput={this.handleInput}
+        />
+        {this.state.weatherData.length > 0 &&
+          <Main
+            lat={this.state.lat}
+            lon={this.state.lon}
+            city={this.state.cityName}
+            map={this.state.cityMap}
+
+          />
+          
+        }
+        <Weather 
+        weather={this.state.weatherData}
+        />
+        <Footer />
       </div>
     );
 
