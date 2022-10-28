@@ -111,7 +111,7 @@ class App extends React.Component {
           handleInput={this.handleInput}
         />
         {this.state.weatherData.length > 0 &&
-          <Main
+          <Main className="Main"
             lat={this.state.lat}
             lon={this.state.lon}
             city={this.state.cityName}
@@ -121,11 +121,12 @@ class App extends React.Component {
           
         }
         <Weather 
+        className="Weather"
         weather={this.state.weatherData}
         />
         <Movie
         movie={this.state.movie}/>
-        <Footer />
+        <Footer className="Footer" />
       </div>
     );
 

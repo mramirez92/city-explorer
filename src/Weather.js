@@ -24,7 +24,7 @@ export default class Weather extends Component {
     ))
     return (
   
-      <div>
+      <div className = "weatherDiv">
         <p>Weather</p>
       {weatherData}
       </div>
