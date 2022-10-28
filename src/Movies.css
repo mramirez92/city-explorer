@@ -1,14 +1,28 @@
-.moviecard{
-  min-width: 50px;
-  min-height: 30px;
-  margin: 30px auto;
+.row{
+  display:flex;
+  justify-content: space-between;
+}
+.movieCard{
+  /* display: flex; */
+  /* width: 25rem; */
+  height: 40rem;
+  margin:  30px;
+  padding:20%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding:1vmax;
+  margin-bottom: auto;
+  font: 1vmax;
 } 
+p.movieText.cardText{
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: hidden;
+}
 .scrollable{
   overflow-y: auto;
   max-height: 300px;
 }
 
-  img{
-    background-color: blue;
- align-self: center;
-  }
+

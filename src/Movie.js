@@ -12,11 +12,11 @@ export default class Movie extends Component {
       
       <Col class>
       <Card className= "movieCard"> 
-        <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} alt={movie.title} />
+        <Card.Img  className="map" variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} alt={movie.title} />
         <Card.Body>
           <Card.Title>{movie.title}</Card.Title>
           <div className="scrollable">
-          <Card.Text>
+          <Card.Text className="movieText">
             {movie.overview}
           </Card.Text>
           </div>
@@ -27,7 +27,7 @@ export default class Movie extends Component {
     ))
     return (
       <Container>
-          <Row xs={1} sm ={2}md={4} lg={5}> 
+          <Row xs={1} sm ={2}md={3} lg={3} className="row"> 
           {movieData}
            </Row>
         

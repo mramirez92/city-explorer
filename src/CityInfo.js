@@ -10,9 +10,9 @@ class Main extends React.Component{
         src={this.props.map} 
       />
       <Figure.Caption>
-        <h3>City Name: {this.props.city} </h3>
-        <p>latitude: {this.props.lat}</p> 
-        <p>logitude: {this.props.lon}</p>
+        <h3>City Name:{this.props.city} </h3>
+        <p>{this.props.lat}</p> 
+        <p>{this.props.lon}</p>
       </Figure.Caption>
     </Figure>
 
