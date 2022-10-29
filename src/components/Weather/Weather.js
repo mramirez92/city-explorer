@@ -5,7 +5,6 @@ import WeatherDay from './WeatherDay'
 import './Weather.css'
 
 export default class Weather extends Component {
-
   render() {
     let weatherData = this.props.weather.map((day) => {
       return (
