@@ -1,37 +1,30 @@
 import React, { Component } from 'react'
-import Accordion from 'react-bootstrap/Accordion'
+import ListGroup from 'react-bootstrap/ListGroup'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-
+import WeatherDay from './WeatherDay'
+import './Weather.css'
 
 export default class Weather extends Component {
 
   render() {
-    let weatherData = this.props.weather.map((day)=>(
-
-      <Accordion>
-      <Card>
-        <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
-          {day.date}
-          </Accordion.Toggle>
-        </Card.Header>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body>{day.description}</Card.Body>
-        </Accordion.Collapse>
-      </Card>
-      </Accordion>
-    ))
+    let weatherData = this.props.weather.map((day) => {
+      return (
+        <WeatherDay
+          datetime={day.datetime}
+          description={day.description}
+        />
+      )
+    })
     return (
-  
-      <div className = "weatherDiv">
-        <p>Weather</p>
-      {weatherData}
-      </div>
-     
+      <Card>
+        <Card.Header>weather</Card.Header>
+        <ListGroup variant="flush">
+          {weatherData}
+        </ListGroup>
+      </Card>
     )
   }
 }
 
 
-  
+
