@@ -1,24 +1,37 @@
-# Project Name
+# City-Explorer
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: Monica Ramirez
+**Version**: 1.5.2
+-------
 
 ## Overview
+
 This Web app will ask for user input (city name) and return that user's city's data acquired from LocationIq API. If the user enters a city not in the database, an error code will alert the user that no city data was found. 
 
+![wrc](/WRC.jpg)
+-----
+
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Create a React App and push it to a github repository. Install Axios to access remote libraries. Connect Netlify to GitHub repository. Connect to backend server locally and remotely (for netflify deployed site). Remote server shall be hosted on Heroku. 
+Connect Heroku server to Netlify to be able to access data from APIs. 
+
+-----
 
 ## Architecture
+- Axios
+- React JS
+- React Bootstrap 
+- CSS 3
+- Heroku
+- Netlify
+- VS Code
+- Github
+- API's:
+  - [WeatherBit API](https://www.weatherbit.io/)
+  - [The Movie DB](https://developers.themoviedb.org/)
+  - [LocationIQ](https://locationiq.com/)
 
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
-6:17pm - app has header
-
+-----
 
 Name of feature: Header
 
@@ -76,7 +89,33 @@ Finish time: 6:55
 
 Actual time needed to complete: 21 mins
 
-## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+--- 
 
-![wrc](/WRC.jpg)
+Name of feature: Weather Components
+
+Estimate of time needed to complete: 5 hours 
+
+Start time: 5:00
+
+Finish time: 10:00
+
+Actual time needed to complete: 5 hours
+
+----
+
+Name of feature: Movie Components
+
+Estimate of time needed to complete: 5 hours 
+
+Start time: 5:00
+
+Finish time: 10:00
+
+Actual time needed to complete: 5 hours
+
+## Credit and Collaborations
+
+[React Bootstrap](https://react-bootstrap.github.io/)
+[Stack Overflow](https://stackoverflow.com/)
+[tobia sahlin](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
+
