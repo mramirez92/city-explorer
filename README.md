@@ -12,7 +12,7 @@ This Web app will ask for user input (city name) and return that user's city's d
 -----
 
 ## Getting Started
-Create a React App and push it to a github repository. Install Axios to access remote libraries. Connect Netliy to GitHub repository. Connect to backend server locally and remotely (for netflify deployed site). Remote server shall be hosted on Heroku. 
+Create a React App and push it to a github repository. Install Axios to access remote libraries. Connect Netlify to GitHub repository. Connect to backend server locally and remotely (for netflify deployed site). Remote server shall be hosted on Heroku. 
 Connect Heroku server to Netlify to be able to access data from APIs. 
 
 -----
