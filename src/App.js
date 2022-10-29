@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Header.js';
-import Main from './Main';
-import Footer from './Footer.js';
-import FormCity from './FormCity.js';
-import Weather from './Weather.js';
-import Movie from './Movie.js'
+import Header from './components/Header/Header.js';
+import Main from './components/Main/Main';
+import Footer from './components/Footer.js';
+import FormCity from './components/FormCity/FormCity.js';
+import Weather from './components/Weather/Weather.js';
+import Movie from './components/Movie/Movie.js'
 import axios from 'axios';
 
 class App extends React.Component {
