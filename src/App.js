@@ -117,15 +117,17 @@ class App extends React.Component {
             city={this.state.cityName}
             map={this.state.cityMap}
 
-          />
-          
+          /> 
         }
+        {
+        this.state.weatherData.length > 0 &&
         <Weather 
         className="Weather"
         weather={this.state.weatherData}
-        />
+        />}
         <Movie
         movie={this.state.movie}/>
+        
         <Footer className="Footer" />
       </div>
     );
